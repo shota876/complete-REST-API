@@ -6,6 +6,7 @@ import compression from 'compression'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import mongoose, { mongo } from "mongoose"
+import router from './router/index.ts'
 
 const app = express()
 dotenv.config()
@@ -17,6 +18,7 @@ app.use(cors({
 app.use(compression())
 app.use(cookieParser())
 app.use(bodyParser.json())
+app.use('/', router())
 
 const server = http.createServer(app)
 
